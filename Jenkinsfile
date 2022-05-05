@@ -7,8 +7,8 @@ node{
     
     stage('Run Docker Compose File')
     {
-        powershell '''docker-compose build'''
-        powershell '''docker-compose up -d'''
+        sh 'docker-compose build'
+        sh 'docker-compose up -d'
     }
   stage('PUSH image to Docker Hub')
     {
@@ -20,10 +20,10 @@ node{
         */
         //docker.withRegistry( 'https://registry.hub.docker.com', 'DockerHubPassword' ) {
              
-             powershell '''docker login -u "onlineshop" -p "adelelmaghloub" docker.io'''
+             sh 'docker login -u "onlineshop" -p "adelelmaghloub" docker.io'''
              //sh 'sudo docker push onlineshop/mysql'
              //sh 'sudo docker push onlineshop/job1_web1.0'
-             powershell '''docker push onlineshop/job1_web2.0'''
+             sh 'docker push onlineshop/job1_web2.0'''
             // sh 'docker push onlineshop/mysql'
           
     }
